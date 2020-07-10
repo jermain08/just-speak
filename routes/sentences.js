@@ -6,8 +6,14 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
 
   database.query('SELECT * FROM sentence_models', function (error, results, fields) {
+    if (error) {
+      res.status(500).json({
+        error: error,
+      });
+    } else {
+      res.json({ data: results });
+    }
 
-    res.json({ data: results });
   })
 
 });
