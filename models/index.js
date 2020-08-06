@@ -16,6 +16,7 @@ if (config.use_env_variable) {
     define: {
       underscored: true
     },
+    logging: console.log,
   }, config);
   sequelize = new Sequelize(config.database, config.username, config.password, options);
 }

@@ -1,11 +1,12 @@
 var express = require('express');
 var { to } = require('await-to-js');
 var router = express.Router();
-var { User } = require('../models');
+var { User, Role } = require('../models');
 
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  const [error, users] = await to(User.findAll());
+
+  const [error, users] = await to(User.findAll({ include: { model: Role, as: 'role' } }));
   if (!!error) {
     return res.json({ success: false, error: error });
   }
