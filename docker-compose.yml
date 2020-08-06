@@ -1,0 +1,24 @@
+version: '2.0'
+services: 
+  mysql:
+    image: mysql:8
+    container_name: just-speak-mysql
+    ports: 
+      - "6603:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+      - ./docker-mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: just-speak-web
+    working_dir: /usr/src/just-speak
+    command: npm run nodemon
+    volumes: 
+      - ./:/usr/src/just-speak
+    ports:
+      - "5555:3000"
+    depends_on: 
+      - mysql
