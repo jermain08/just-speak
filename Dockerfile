@@ -1,5 +1,7 @@
 FROM node:12
 
+RUN npm install -g sequelize-cli
+
 WORKDIR /usr/src/just-speak
 
 COPY package*.json ./
