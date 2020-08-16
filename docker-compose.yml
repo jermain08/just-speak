@@ -9,15 +9,16 @@ services:
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
       - ./docker-mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
-  web:
+  api:
     build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: just-speak-web
+    container_name: just-speak-api
     working_dir: /usr/src/just-speak
     command: npm run nodemon
     volumes: 
       - ./:/usr/src/just-speak
+      - /usr/src/just-speak/node_modules
     ports:
       - "5555:3000"
     depends_on: 
