@@ -1,5 +1,5 @@
 var express = require('express');
-var { to } = require('await-to-js');
+var { to } = require('../utils/helpers');
 var router = express.Router();
 var { User, Role } = require('../models');
 
