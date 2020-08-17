@@ -1,6 +1,6 @@
 'use strict';
 const bcrypt = require('bcrypt');
-const { Op } = require('sequelize');
+const {Op} = require('sequelize');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -23,7 +23,7 @@ module.exports = {
       full_name: 'Admin',
       username: 'admin',
       password: bcrypt.hashSync('admin123', bcrypt.genSaltSync(10)),
-      role_id: 1
+      role_id: 1,
     }, {
       full_name: 'Luong Kien Minh',
       username: 'minhkl',
@@ -42,12 +42,12 @@ module.exports = {
     await queryInterface.bulkDelete('Users', {
       username: {
         [Op.in]: ['admin', 'minhkl'],
-      }
+      },
     }, {});
     await queryInterface.bulkDelete('Roles', {
       id: {
         [Op.in]: [1, 2],
-      }
+      },
     }, {});
-  }
+  },
 };

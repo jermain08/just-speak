@@ -6,15 +6,15 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vietnamese: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       english: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       patternId: {
         type: Sequelize.INTEGER,
@@ -26,11 +26,11 @@ module.exports = {
       },
       audioUrl: {
         field: 'audio_url',
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Sentences');
-  }
+  },
 };
