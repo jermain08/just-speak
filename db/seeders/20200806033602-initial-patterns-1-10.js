@@ -1,5 +1,5 @@
 'use strict';
-const { Op } = require('sequelize');
+const {Op} = require('sequelize');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -63,7 +63,7 @@ module.exports = {
       ordinal_number: 10,
       english: 'S + to be getting used to + V-ing.',
       vietnamese: 'Dần quen với việc gì đó.',
-    }], {})
+    }], {});
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -77,7 +77,7 @@ module.exports = {
       ordinal_number: {
         [Op.gte]: 1,
         [Op.lte]: 10,
-      }
+      },
     }, {});
-  }
+  },
 };

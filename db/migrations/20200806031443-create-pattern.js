@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       ordinalNumber: {
         allowNull: false,
@@ -16,14 +16,14 @@ module.exports = {
       },
       english: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       vietnamese: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Patterns');
-  }
+  },
 };

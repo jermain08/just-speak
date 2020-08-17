@@ -1,6 +1,6 @@
 'use strict';
 
-const role = require("../../models/role");
+const role = require('../../models/role');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -9,7 +9,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       fullName: {
         type: Sequelize.STRING,
@@ -43,10 +43,10 @@ module.exports = {
         type: Sequelize.DATE,
         field: 'updated_at',
         defaultValue: Sequelize.fn('NOW'),
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Users');
-  }
+  },
 };

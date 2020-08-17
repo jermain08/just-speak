@@ -6,12 +6,12 @@ const responseSuccess = (res, data, code = 200) => {
   return res.json({
     status: 'success',
     data,
-  })
+  });
 };
 const responseFail = (res, error, code = 500) => {
   let errorObj = error;
   if (typeof error === 'string') {
-    errorObj = { message: error };
+    errorObj = {message: error};
   }
   res.statusCode = code;
   return res.json({

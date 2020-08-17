@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Pattern extends Model {
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Pattern.init({
     ordinalNumber: DataTypes.INTEGER,
     english: DataTypes.STRING,
-    vietnamese: DataTypes.STRING
+    vietnamese: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Pattern',
