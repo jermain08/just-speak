@@ -18,7 +18,7 @@ const validateParams = (req, res, next) => {
   next();
 };
 
-router.post('/', validateParams, async function(req, res, next) {
+router.post('/login', validateParams, async function(req, res, next) {
   const {username, password} = req.body;
 
   const [error, user] = await to(User.findOne({
@@ -44,4 +44,30 @@ router.post('/', validateParams, async function(req, res, next) {
 
   return responseSuccess(res, {token});
 });
+
+router.post('/user', async function(req, res, next) {
+  if (!req.user) {
+    return responseFail(res, 'Invalid token');
+  }
+  const username = req.user.username;
+
+  const [error, user] = await to(User.findOne({
+    where: {username},
+    include: {
+      model: Role,
+      as: 'role',
+    },
+  }));
+
+  if (error) {
+    return responseFail(res, error);
+  }
+
+  return responseSuccess(res, {user});
+});
+
+router.post('/test', async function(req, res) {
+  return responseSuccess(res, {success: true});
+});
+
 module.exports = router;
